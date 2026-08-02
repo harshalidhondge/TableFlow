@@ -1,13 +1,15 @@
 from flask import Flask
 from config import Config
-from utils.extensions import db
+from utils.extensions import db, bcrypt
 
 app = Flask(__name__)
 app.config.from_object(Config)
 
 db.init_app(app)
+bcrypt.init_app(app)
 
 from models.user import User
+from models.table import Table
 from routes.auth import auth
 
 app.register_blueprint(auth)

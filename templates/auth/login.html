@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Login | TableFlow</title>
+
+    <style>
+
+        body{
+            background:#f5f5f5;
+            font-family:Arial;
+        }
+
+        .container{
+
+            width:400px;
+            margin:80px auto;
+            background:white;
+            padding:30px;
+            border-radius:10px;
+            box-shadow:0 0 10px gray;
+
+        }
+
+        h2{
+
+            text-align:center;
+
+        }
+
+        input{
+
+            width:100%;
+            padding:10px;
+            margin-top:10px;
+            margin-bottom:15px;
+
+        }
+
+        button{
+
+            width:100%;
+            padding:10px;
+            background:#ff6b00;
+            color:white;
+            border:none;
+            cursor:pointer;
+
+        }
+
+        a{
+
+            text-decoration:none;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>User Login</h2>
+
+<form method="POST" action="/login">
+
+<label>Email</label>
+
+<input
+type="email"
+name="email"
+placeholder="Enter Email"
+required>
+
+<label>Password</label>
+
+<input
+type="password"
+name="password"
+placeholder="Enter Password"
+required>
+
+<button type="submit">
+
+Login
+
+</button>
+
+<br><br>
+
+<center>
+
+Don't have an account?
+
+<a href="/register">
+
+Register
+
+</a>
+
+</center>
+
+</form>
+
+</div>
+
+</body>
+
+</html>
