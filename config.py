@@ -1,20 +1,19 @@
 import os
 from dotenv import load_dotenv
-from urllib.parse import quote_plus
 
 load_dotenv()
 
+
 class Config:
-    SECRET_KEY = os.getenv("SECRET_KEY")
+    SECRET_KEY = os.getenv("bffeddbafa9ed3da1f67f383e939b34e3a3caf9b6ce6912fce02f07091417c30", "tableflow_secret_key")
 
-    DB_USER = os.getenv("DB_USER")
-    DB_PASSWORD = quote_plus(os.getenv("DB_PASSWORD"))
-    DB_HOST = os.getenv("DB_HOST")
-    DB_PORT = os.getenv("DB_PORT")
-    DB_NAME = os.getenv("DB_NAME")
+    DATABASE_URL = os.getenv("postgresql://tableflow_db_s4rz_user:WhhPvVzNeD2mtY1tsHOggjNgfWj0PJyS@dpg-d9rkfuv10e5c7389rft0-a/tableflow_db_s4rz")
 
-    SQLALCHEMY_DATABASE_URI = (
-        f"mysql+pymysql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
-    )
+    if DATABASE_URL:
+        DATABASE_URL = DATABASE_URL.replace(
+            "postgres://", "postgresql://", 1
+        )
+
+    SQLALCHEMY_DATABASE_URI = DATABASE_URL
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
