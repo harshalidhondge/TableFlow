@@ -1,0 +1,424 @@
+{% extends "layout/base.html" %}
+
+{% block title %}
+Restaurant Tables | Bella Vista
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid py-4">
+
+<div class="row mb-4">
+
+<div class="col-lg-12">
+
+<div class="card glass-card shadow-premium border-0 p-4">
+
+<div class="d-flex justify-content-between align-items-center flex-wrap">
+
+<div>
+
+<h2 class="fw-bold text-warning">
+
+🍽 Bella Vista Restaurant
+
+</h2>
+
+<p class="text-light mb-0">
+
+Premium Restaurant Management System
+
+</p>
+
+<small class="text-secondary">
+
+Manage Restaurant Tables, Capacity & Availability
+
+</small>
+
+</div>
+
+<div class="d-flex gap-3 align-items-center">
+
+<div class="search-box">
+
+<i class="bi bi-search"></i>
+
+<input
+type="text"
+id="tableSearch"
+class="form-control"
+placeholder="Search Table...">
+
+</div>
+
+<a
+href="{{ url_for('auth.add_table') }}"
+class="btn btn-success">
+
+<i class="bi bi-plus-circle-fill"></i>
+
+Add Table
+
+</a>
+
+</div>
+
+</div>
+
+<hr>
+
+<div class="row g-4 mt-2">
+
+<div class="col-lg-3 col-md-6">
+
+<div class="stats-card total-card">
+
+<i class="bi bi-grid-3x3-gap-fill stats-icon"></i>
+
+<h2>30</h2>
+
+<h6>Total Tables</h6>
+
+</div>
+
+</div>
+
+<div class="col-lg-3 col-md-6">
+
+<div class="stats-card available-card">
+
+<i class="bi bi-check-circle-fill stats-icon"></i>
+
+<h2>18</h2>
+
+<h6>Available</h6>
+
+</div>
+
+</div>
+
+<div class="col-lg-3 col-md-6">
+
+<div class="stats-card reserved-card">
+
+<i class="bi bi-bookmark-check-fill stats-icon"></i>
+
+<h2>7</h2>
+
+<h6>Reserved</h6>
+
+</div>
+
+</div>
+
+<div class="col-lg-3 col-md-6">
+
+<div class="stats-card booked-card">
+
+<i class="bi bi-cup-hot-fill stats-icon"></i>
+
+<h2>5</h2>
+
+<h6>Occupied</h6>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="card glass-card shadow-premium p-4">
+
+<div class="table-responsive">
+
+<table
+id="restaurantTable"
+class="table table-dark table-hover align-middle">
+
+<thead>
+
+<tr>
+
+<th>#</th>
+
+<th>Floor</th>
+
+<th>Table</th>
+
+<th>Capacity</th>
+
+<th>Location</th>
+
+<th>Category</th>
+
+<th>Status</th>
+
+<th class="text-center">Actions</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% if tables %}
+
+{% for table in tables %}
+<tr>
+
+<td>
+
+<span class="badge bg-dark">
+
+{{ table.id }}
+
+</span>
+
+</td>
+
+<td>
+
+<span class="badge bg-info text-dark">
+
+🏢 {{ table.floor }}
+
+</span>
+
+</td>
+
+<td>
+
+<div class="fw-bold text-warning">
+
+🍽 {{ table.table_name }}
+
+</div>
+
+<small class="text-secondary">
+
+Table Number : {{ table.table_name }}
+
+</small>
+
+</td>
+
+<td>
+
+👥 {{ table.capacity }} Persons
+
+</td>
+
+<td>
+
+📍 {{ table.location }}
+
+</td>
+
+<td>
+
+⭐ {{ table.table_type }}
+
+</td>
+
+<td>
+
+{% if table.status=="Available" %}
+
+<span class="badge badge-available">
+
+🟢 Available
+
+</span>
+
+{% elif table.status=="Reserved" %}
+
+<span class="badge badge-reserved">
+
+🟡 Reserved
+
+</span>
+
+{% elif table.status=="Booked" %}
+
+<span class="badge badge-booked">
+
+🔴 Occupied
+
+</span>
+
+{% else %}
+
+<span class="badge bg-secondary">
+
+{{ table.status }}
+
+</span>
+
+{% endif %}
+
+<br>
+
+<small class="text-secondary">
+
+Updated Today
+
+</small>
+
+</td>
+
+<td>
+
+<div class="d-flex justify-content-center gap-2">
+
+<a
+
+href="{{ url_for('auth.edit_restaurant_table',id=table.id) }}"
+
+class="btn btn-warning btn-sm">
+
+<i class="bi bi-pencil-square"></i>
+
+</a>
+
+<button
+
+class="btn btn-danger btn-sm"
+
+onclick="deleteRestaurantTable({{table.id}})">
+
+<i class="bi bi-trash-fill"></i>
+
+</button>
+
+</div>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+{% else %}
+<tr>
+
+<td colspan="8" class="text-center py-5">
+
+<div class="py-5">
+
+<i class="bi bi-grid-3x3-gap-fill text-warning"
+style="font-size:70px;"></i>
+
+<h3 class="mt-4 text-warning">
+
+No Restaurant Tables Found
+
+</h3>
+
+<p class="text-light">
+
+There are no restaurant tables available.
+
+Click below to create your first restaurant table.
+
+</p>
+
+<a
+href="{{ url_for('auth.add_table') }}"
+class="btn btn-success mt-3">
+
+<i class="bi bi-plus-circle-fill"></i>
+
+Add First Table
+
+</a>
+
+</div>
+
+</td>
+
+</tr>
+
+{% endif %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+
+//=========================
+// SEARCH TABLE
+//=========================
+
+const search=document.getElementById("tableSearch");
+
+search.addEventListener("keyup",function(){
+
+let value=this.value.toLowerCase();
+
+let rows=document.querySelectorAll("#restaurantTable tbody tr");
+
+rows.forEach(function(row){
+
+let text=row.innerText.toLowerCase();
+
+row.style.display=text.includes(value) ? "" : "none";
+
+});
+
+});
+
+//=========================
+// DELETE TABLE
+//=========================
+
+function deleteRestaurantTable(id){
+
+Swal.fire({
+
+title:"Delete Restaurant Table?",
+
+text:"This action cannot be undone.",
+
+icon:"warning",
+
+showCancelButton:true,
+
+confirmButtonColor:"#198754",
+
+cancelButtonColor:"#dc3545",
+
+confirmButtonText:"Yes, Delete",
+
+cancelButtonText:"Cancel"
+
+}).then((result)=>{
+
+if(result.isConfirmed){
+
+window.location.href="/delete_restaurant_table/"+id;
+
+}
+
+});
+
+}
+
+</script>
+
+{% endblock %}

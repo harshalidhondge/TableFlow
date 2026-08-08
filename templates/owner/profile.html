@@ -1,0 +1,31 @@
+{% extends "layout/base.html" %}
+
+{% block title %}
+My Profile | Bella Vista
+{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="card glass-card p-4">
+        <div class="row align-items-center">
+            <div class="col-md-4 text-center">
+                <img src="{{ url_for('static', filename='images/' + (user.profile_image or 'harshali.jpg')) }}?v=2"
+                     alt="Profile Photo"
+                     class="rounded-circle border border-warning border-3"
+                     style="width: 180px; height: 180px; object-fit: cover;">
+                <h3 class="mt-3 text-warning">{{ user.name }}</h3>
+                <p class="text-light">Restaurant Owner</p>
+            </div>
+            <div class="col-md-8">
+                <h4 class="text-warning mb-3">Upload Profile Photo</h4>
+                <form method="POST" enctype="multipart/form-data" action="{{ url_for('auth.owner_profile') }}">
+                    <div class="mb-3">
+                        <input type="file" name="profile_image" class="form-control" accept="image/*" required>
+                    </div>
+                    <button type="submit" class="btn btn-warning">Upload Photo</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

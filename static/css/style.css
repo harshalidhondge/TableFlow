@@ -1,0 +1,1495 @@
+/*==================================================
+        BELLA VISTA PREMIUM RESTAURANT THEME
+==================================================*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap');
+
+:root{
+
+    --primary:#0B1D18;
+    --secondary:#162C24;
+    --gold:#D4AF37;
+    --white:#F8F9FA;
+    --text:#EDEDED;
+    --success:#22C55E;
+    --warning:#FACC15;
+    --danger:#EF4444;
+    --shadow:0 15px 35px rgba(0,0,0,.35);
+
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+
+    background:
+    linear-gradient(rgba(0,0,0,.60),rgba(0,0,0,.60)),
+    url("../images/restaurant-bg.jpg");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+
+    color:var(--white);
+
+    min-height:100vh;
+
+}
+
+/*==========================
+SCROLLBAR
+===========================*/
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:var(--gold);
+    border-radius:20px;
+}
+
+::-webkit-scrollbar-track{
+    background:#111;
+}
+
+/*==========================
+NAVBAR
+===========================*/
+
+.navbar{
+
+    background:rgba(8,18,15,.95)!important;
+
+    backdrop-filter:blur(10px);
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+    padding:14px 25px;
+
+}
+
+.navbar-brand{
+
+    color:var(--gold)!important;
+
+    font-weight:700;
+
+    font-size:30px;
+
+    font-family:'Playfair Display',serif;
+
+}
+
+.nav-link{
+
+    color:white!important;
+
+    margin-left:10px;
+
+    transition:.3s;
+
+    font-weight:500;
+
+}
+
+.nav-link:hover{
+
+    color:var(--gold)!important;
+
+}
+
+/*==========================
+SIDEBAR
+===========================*/
+
+.sidebar{
+
+    background:rgba(12,22,18,.94);
+
+    backdrop-filter:blur(8px);
+
+    min-height:100vh;
+
+    border-right:1px solid rgba(255,255,255,.05);
+
+}
+
+.sidebar .nav-link{
+
+    border-radius:12px;
+
+    padding:12px 18px;
+
+    margin:6px 10px;
+
+}
+
+.sidebar .nav-link:hover{
+
+    background:rgba(212,175,55,.15);
+
+}
+
+/*==========================
+CARDS
+===========================*/
+
+.card{
+
+    background:rgba(18,31,27,.88);
+
+    border:none;
+
+    border-radius:22px;
+
+    box-shadow:var(--shadow);
+
+    color:white;
+
+}
+
+.card:hover{
+
+    transform:translateY(-6px);
+
+    transition:.35s;
+
+}
+
+/*==========================
+HEADINGS
+===========================*/
+
+h1,h2,h3,h4,h5{
+
+    color:white;
+
+    font-weight:700;
+
+}
+
+.text-gold{
+
+    color:var(--gold)!important;
+
+}
+
+/*==========================
+BUTTONS
+===========================*/
+
+.btn{
+
+    border-radius:14px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.btn-warning{
+
+    background:var(--gold);
+
+    border:none;
+
+    color:#111;
+
+}
+
+.btn-warning:hover{
+
+    transform:translateY(-3px);
+
+}
+
+.btn-success{
+
+    background:var(--success);
+
+    border:none;
+
+}
+
+.btn-danger{
+
+    border:none;
+
+}
+
+.btn-primary{
+
+    border:none;
+
+}
+/*=========================================
+        PREMIUM INPUT FIELDS
+=========================================*/
+
+.form-control,
+.form-select{
+
+    background:rgba(255,255,255,.08);
+
+    color:#fff;
+
+    border:1px solid rgba(255,255,255,.15);
+
+    border-radius:14px;
+
+    padding:12px 15px;
+
+    transition:.30s;
+
+}
+
+.form-control:focus,
+.form-select:focus{
+
+    background:rgba(255,255,255,.12);
+
+    color:#fff;
+
+    border-color:#D4AF37;
+
+    box-shadow:0 0 0 .2rem rgba(212,175,55,.20);
+
+}
+
+.form-control::placeholder{
+
+    color:#d1d1d1;
+
+}
+
+label{
+
+    color:#fff;
+
+    font-weight:600;
+
+    margin-bottom:8px;
+
+}
+
+/*=========================================
+SEARCH BOX
+=========================================*/
+
+.search-box{
+
+    position:relative;
+
+}
+
+.search-box input{
+
+    padding-left:48px;
+
+}
+
+.search-box i{
+
+    position:absolute;
+
+    left:18px;
+
+    top:15px;
+
+    color:#D4AF37;
+
+}
+
+/*=========================================
+TABLE DESIGN
+=========================================*/
+
+.table{
+
+    color:#fff;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+}
+
+.table thead{
+
+    background:#0F2A22;
+
+}
+
+.table thead th{
+
+    color:#D4AF37;
+
+    border:none;
+
+    padding:18px;
+
+    font-weight:600;
+
+}
+
+.table tbody td{
+
+    padding:18px;
+
+    border-color:rgba(255,255,255,.05);
+
+}
+
+.table tbody tr{
+
+    transition:.30s;
+
+}
+
+.table tbody tr:hover{
+
+    background:rgba(255,255,255,.05);
+
+}
+
+/*=========================================
+STATUS BADGES
+=========================================*/
+
+.badge{
+
+    padding:8px 16px;
+
+    border-radius:50px;
+
+    font-size:13px;
+
+    font-weight:600;
+
+}
+
+.badge-available{
+
+    background:#16A34A;
+
+    color:#fff;
+
+}
+
+.badge-reserved{
+
+    background:#FACC15;
+
+    color:#111;
+
+}
+
+.badge-booked{
+
+    background:#DC2626;
+
+    color:#fff;
+
+}
+
+/*=========================================
+OWNER PROFILE
+=========================================*/
+
+.owner-avatar{
+
+    width:170px;
+
+    height:170px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:5px solid #D4AF37;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.40);
+
+    transition:.35s;
+
+}
+
+.owner-avatar:hover{
+
+    transform:scale(1.05);
+
+}
+
+/*=========================================
+STATISTICS CARDS
+=========================================*/
+
+.stats-card{
+
+    border-radius:22px;
+
+    padding:30px;
+
+    text-align:center;
+
+    color:white;
+
+    transition:.35s;
+
+}
+
+.stats-card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.stats-card h2{
+
+    font-size:34px;
+
+    font-weight:700;
+
+}
+
+.stats-card h6{
+
+    margin-top:12px;
+
+    opacity:.90;
+
+}
+
+.total-card{
+
+    background:linear-gradient(135deg,#0F5132,#198754);
+
+}
+
+.available-card{
+
+    background:linear-gradient(135deg,#15803D,#22C55E);
+
+}
+
+.reserved-card{
+
+    background:linear-gradient(135deg,#EAB308,#FACC15);
+
+    color:#111;
+
+}
+
+.booked-card{
+
+    background:linear-gradient(135deg,#B91C1C,#EF4444);
+
+}
+
+.info-card{
+
+    background:linear-gradient(135deg,#1D4ED8,#2563EB);
+
+}
+/*=========================================
+        PREMIUM FLOOR CARDS
+=========================================*/
+
+.floor-card{
+
+    background:rgba(16,37,33,.92);
+
+    border-radius:22px;
+
+    padding:25px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    transition:.35s;
+
+    box-shadow:0 12px 25px rgba(0,0,0,.30);
+
+}
+
+.floor-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 20px 45px rgba(0,0,0,.40);
+
+}
+
+.floor-card h4{
+
+    color:#D4AF37;
+
+    font-weight:700;
+
+}
+
+.floor-card hr{
+
+    border-color:rgba(255,255,255,.08);
+
+}
+
+.floor-card small{
+
+    color:#ddd;
+
+}
+
+/*=========================================
+        RESTAURANT TABLE BOX
+=========================================*/
+
+.floor-table{
+
+    padding:18px;
+
+    border-radius:18px;
+
+    text-align:center;
+
+    font-weight:600;
+
+    transition:.35s;
+
+    cursor:pointer;
+
+    box-shadow:0 8px 18px rgba(0,0,0,.25);
+
+}
+
+.floor-table:hover{
+
+    transform:translateY(-6px) scale(1.05);
+
+}
+
+.floor-table h5{
+
+    font-size:22px;
+
+    font-weight:700;
+
+    margin-bottom:10px;
+
+}
+
+.floor-table small{
+
+    display:block;
+
+    font-size:13px;
+
+    margin-top:4px;
+
+}
+
+/*=========================================
+AVAILABLE
+=========================================*/
+
+.floor-table.available{
+
+    background:linear-gradient(135deg,#15803D,#22C55E);
+
+    color:white;
+
+}
+
+/*=========================================
+RESERVED
+=========================================*/
+
+.floor-table.reserved{
+
+    background:linear-gradient(135deg,#EAB308,#FACC15);
+
+    color:#111;
+
+}
+
+/*=========================================
+OCCUPIED
+=========================================*/
+
+.floor-table.booked{
+
+    background:linear-gradient(135deg,#B91C1C,#EF4444);
+
+    color:white;
+
+}
+
+/*=========================================
+WELCOME BANNER
+=========================================*/
+
+.restaurant-banner{
+
+    width:100%;
+
+    height:320px;
+
+    object-fit:cover;
+
+    border-radius:20px;
+
+}
+
+.banner-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+        rgba(0,0,0,.55),
+        rgba(0,0,0,.35)
+    );
+
+    border-radius:20px;
+
+}
+
+.banner-content{
+
+    position:absolute;
+
+    top:50%;
+
+    left:40px;
+
+    transform:translateY(-50%);
+
+    z-index:10;
+
+}
+
+.banner-content h1{
+
+    font-size:42px;
+
+    font-family:'Playfair Display',serif;
+
+    color:#fff;
+
+}
+
+.banner-content p{
+
+    color:#eee;
+
+    font-size:18px;
+
+}
+
+/*=========================================
+WELCOME CARD
+=========================================*/
+
+.welcome-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.welcome-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+
+        90deg,
+
+        rgba(0,0,0,.65),
+
+        rgba(0,0,0,.25)
+
+    );
+
+}
+
+/*=========================================
+REPORT CARD
+=========================================*/
+
+.report-card{
+
+    background:rgba(18,30,26,.90);
+
+    border-radius:20px;
+
+    padding:25px;
+
+    box-shadow:0 15px 30px rgba(0,0,0,.30);
+
+}
+
+.report-title{
+
+    color:#D4AF37;
+
+    font-weight:700;
+
+}
+
+.report-value{
+
+    font-size:32px;
+
+    font-weight:700;
+
+    color:#fff;
+
+}
+
+/*=========================================
+PROGRESS BAR
+=========================================*/
+
+.progress{
+
+    background:#2b2b2b;
+
+    height:10px;
+
+    border-radius:20px;
+
+}
+
+.progress-bar{
+
+    background:#D4AF37;
+
+}
+
+/*=========================================
+FOOTER
+=========================================*/
+
+.footer{
+
+    margin-top:50px;
+
+    padding:30px;
+
+    background:#081512;
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+    text-align:center;
+
+}
+
+.footer h5{
+
+    color:#D4AF37;
+
+}
+
+.footer p{
+
+    color:#d8d8d8;
+
+    margin-bottom:0;
+
+}
+/*=========================================
+            PREMIUM SEARCH BAR
+=========================================*/
+
+.search-box{
+    position:relative;
+    margin-bottom:25px;
+}
+
+.search-box input{
+    width:100%;
+    height:55px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:50px;
+    padding:0 20px 0 55px;
+    color:#fff;
+    transition:.35s;
+}
+
+.search-box input:focus{
+    border-color:#D4AF37;
+    box-shadow:0 0 15px rgba(212,175,55,.25);
+    outline:none;
+}
+
+.search-box i{
+    position:absolute;
+    left:20px;
+    top:18px;
+    color:#D4AF37;
+    font-size:18px;
+}
+
+/*=========================================
+            BOOKING FORM
+=========================================*/
+
+.booking-form{
+
+    background:rgba(16,28,24,.90);
+
+    padding:30px;
+
+    border-radius:22px;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.35);
+
+}
+
+.booking-form h2{
+
+    color:#D4AF37;
+
+    margin-bottom:25px;
+
+    font-weight:700;
+
+}
+
+.booking-form label{
+
+    color:#fff;
+
+    font-weight:600;
+
+    margin-bottom:8px;
+
+}
+
+.booking-form .form-control,
+.booking-form .form-select{
+
+    background:#1A2E28;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    color:#fff;
+
+}
+
+.booking-form .form-control:focus,
+.booking-form .form-select:focus{
+
+    border-color:#D4AF37;
+
+    box-shadow:0 0 10px rgba(212,175,55,.20);
+
+}
+
+/*=========================================
+            REPORT TABLE
+=========================================*/
+
+.report-table{
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+}
+
+.report-table thead{
+
+    background:#0B2A22;
+
+}
+
+.report-table thead th{
+
+    color:#D4AF37;
+
+    border:none;
+
+}
+
+.report-table tbody tr{
+
+    transition:.30s;
+
+}
+
+.report-table tbody tr:hover{
+
+    background:rgba(255,255,255,.05);
+
+}
+
+/*=========================================
+            PREMIUM ALERTS
+=========================================*/
+
+.alert{
+
+    border:none;
+
+    border-radius:15px;
+
+}
+
+.alert-success{
+
+    background:#198754;
+
+    color:#fff;
+
+}
+
+.alert-warning{
+
+    background:#D4AF37;
+
+    color:#111;
+
+}
+
+.alert-danger{
+
+    background:#DC3545;
+
+    color:#fff;
+
+}
+
+/*=========================================
+            HOVER EFFECTS
+=========================================*/
+
+.btn:hover,
+.card:hover,
+.floor-card:hover,
+.floor-table:hover{
+
+    transition:.35s ease;
+
+}
+
+/*=========================================
+            PREMIUM ANIMATION
+=========================================*/
+
+.fade-up{
+
+    animation:fadeUp .8s ease;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(30px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+.zoom{
+
+    animation:zoomIn .6s ease;
+
+}
+
+@keyframes zoomIn{
+
+    from{
+
+        transform:scale(.9);
+
+        opacity:0;
+
+    }
+
+    to{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+}
+
+/*=========================================
+            RESPONSIVE
+=========================================*/
+
+@media(max-width:992px){
+
+    .owner-avatar{
+
+        width:140px;
+
+        height:140px;
+
+    }
+
+    .banner-content h1{
+
+        font-size:30px;
+
+    }
+
+    .stats-card{
+
+        margin-bottom:20px;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .restaurant-banner{
+
+        height:220px;
+
+    }
+
+    .banner-content{
+
+        left:20px;
+
+    }
+
+    .banner-content h1{
+
+        font-size:24px;
+
+    }
+
+    .floor-table{
+
+        margin-bottom:15px;
+
+    }
+
+    .table{
+
+        font-size:13px;
+
+    }
+
+}
+
+@media(max-width:576px){
+
+    .owner-avatar{
+
+width:170px;
+
+height:170px;
+
+border-radius:50%;
+
+object-fit:cover;
+
+border:5px solid #D4AF37;
+
+box-shadow:0 10px 30px rgba(0,0,0,.40);
+
+display:block;
+
+margin:auto;
+
+}
+
+    .banner-content h1{
+
+        font-size:20px;
+
+    }
+
+    .banner-content p{
+
+        display:none;
+
+    }
+
+}
+
+/*=========================================
+            PREMIUM GLOW
+=========================================*/
+
+.glow{
+
+    box-shadow:
+        0 0 10px rgba(212,175,55,.35),
+        0 0 20px rgba(212,175,55,.25);
+
+}
+
+.text-gold{
+
+    color:#D4AF37 !important;
+
+}
+
+.bg-premium{
+
+    background:#102521;
+
+}
+
+.shadow-premium{
+
+    box-shadow:0 20px 45px rgba(0,0,0,.35);
+
+}
+/* =====================================================
+   PREMIUM FLOOR TABLE LAYOUT
+===================================================== */
+
+.floor-layout-section {
+    width: 100%;
+    margin-top: 25px;
+}
+
+.floor-layout-section .section-title {
+    margin-bottom: 22px;
+}
+
+.floor-layout-section .section-title h3 {
+    color: #f4c430;
+    font-weight: 700;
+    font-size: 28px;
+    margin: 0;
+}
+
+
+/* TABLE GRID */
+
+.floor-table-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(120px, 1fr));
+    gap: 16px;
+    width: 100%;
+}
+
+
+/* TABLE CARD */
+
+.floor-table-card {
+    min-height: 125px;
+    padding: 18px 12px;
+    border-radius: 18px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    transition: all 0.25s ease;
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,0.25);
+
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+.floor-table-card:hover {
+    transform: translateY(-5px);
+    box-shadow:
+        0 14px 30px rgba(0,0,0,0.35);
+}
+
+
+/* TABLE NUMBER */
+
+.table-number {
+    font-size: 24px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 4px;
+}
+
+
+/* FLOOR */
+
+.table-floor {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 9px;
+}
+
+
+/* STATUS */
+
+.table-status {
+    font-size: 13px;
+    font-weight: 700;
+
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    color: #ffffff;
+}
+
+
+/* STATUS DOT */
+
+.status-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+
+/* AVAILABLE */
+
+.table-available {
+    background: linear-gradient(
+        135deg,
+        #11998e,
+        #16a34a
+    );
+}
+
+.available-dot {
+    background: #b7ffcf;
+    box-shadow: 0 0 8px #b7ffcf;
+}
+
+
+/* RESERVED */
+
+.table-reserved {
+    background: linear-gradient(
+        135deg,
+        #d99a00,
+        #f4b400
+    );
+}
+
+.reserved-dot {
+    background: #fff2a8;
+    box-shadow: 0 0 8px #fff2a8;
+}
+
+
+/* BOOKED */
+
+.table-booked {
+    background: linear-gradient(
+        135deg,
+        #c81e1e,
+        #ef3030
+    );
+}
+
+.booked-dot {
+    background: #ffd0d0;
+    box-shadow: 0 0 8px #ffd0d0;
+}
+
+
+/* =====================================================
+   REMOVE EMPTY SPACE UNDER QUICK ACTIONS
+===================================================== */
+
+.quick-actions-card {
+    height: fit-content !important;
+    min-height: 0 !important;
+    align-self: flex-start !important;
+}
+
+.quick-actions-card .card {
+    height: fit-content !important;
+    min-height: 0 !important;
+}
+
+
+/* LEFT COLUMN SHOULD NOT STRETCH */
+
+.quick-actions-column {
+    align-self: flex-start !important;
+    height: fit-content !important;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 1200px) {
+
+    .floor-table-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .floor-table-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+
+@media (max-width: 576px) {
+
+    .floor-table-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .floor-table-card {
+        min-height: 110px;
+    }
+
+    .table-number {
+        font-size: 20px;
+    }
+
+}
+/* =====================================================
+   ANALYTICS + UPCOMING BOOKINGS
+===================================================== */
+
+.analytics-card,
+.upcoming-card {
+    height: fit-content !important;
+    min-height: 0 !important;
+}
+
+.section-heading {
+    color: #f4c430;
+    font-weight: 800;
+    font-size: 28px;
+}
+
+.analytics-chart {
+    width: 100%;
+    min-height: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.analytics-chart canvas {
+    max-width: 100%;
+    max-height: 260px;
+}
+
+.analytics-occupancy p {
+    color: #d0d0d0;
+    font-size: 15px;
+}
+
+.analytics-occupancy h2 {
+    font-size: 34px;
+}
+
+
+/* UPCOMING BOOKINGS */
+
+.upcoming-card {
+    overflow: hidden;
+}
+
+.dashboard-booking-table {
+    margin-bottom: 0;
+    color: #fff;
+}
+
+.dashboard-booking-table thead th {
+    color: #f4c430;
+    font-size: 16px;
+    font-weight: 700;
+    border-bottom: 1px solid rgba(255,255,255,.15);
+    padding: 15px;
+}
+
+.dashboard-booking-table tbody td {
+    color: #f5f5f5;
+    padding: 17px 15px;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.dashboard-booking-table tbody tr:hover {
+    background: rgba(255,255,255,.04);
+}
+
+
+/* STATUS */
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 7px 13px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.status-badge.booked {
+    background: #e63946;
+    color: #fff;
+}
+
+.status-badge.reserved {
+    background: #f4b400;
+    color: #111;
+}
+
+.status-badge.available {
+    background: #16a34a;
+    color: #fff;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 991px) {
+
+    .analytics-card,
+    .upcoming-card {
+        width: 100%;
+    }
+
+    .section-heading {
+        font-size: 24px;
+    }
+
+}

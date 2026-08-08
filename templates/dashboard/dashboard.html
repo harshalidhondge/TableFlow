@@ -1,0 +1,336 @@
+{% extends "layout/base.html" %}
+
+{% block title %}
+Dashboard | Bella Vista
+{% endblock %}
+
+{% block content %}
+<!-- ========================= -->
+<!-- PREMIUM OWNER HEADER -->
+<!-- ========================= -->
+<div class="row mb-4">
+    <div class="col-lg-8 mb-4 mb-lg-0">
+        <div class="card glass-card overflow-hidden border-0 h-100">
+            <div class="position-relative h-100">
+                <img src="{{ url_for('static', filename='images/restaurant-banner.jpg') }}"
+                     class="w-100 h-100"
+                     style="object-fit:cover; min-height: 250px;">
+                <div class="position-absolute top-0 start-0 w-100 h-100" style="background:rgba(0,0,0,.45);"></div>
+                <div class="position-absolute top-50 start-0 translate-middle-y p-4 p-md-5">
+                    <h1 class="fw-bold text-white">
+                        Welcome, <span class="text-warning">{{ user.name }}</span>
+                    </h1>
+                    <p class="text-light fs-5">
+                        Bella Vista Restaurant Owner Dashboard
+                    </p>
+                    <p class="text-light d-none d-md-block">
+                        Manage bookings, restaurant floors, tables and analytics from one dashboard.
+                    </p>
+                    <a href="{{ url_for('auth.create_table') }}" class="btn btn-warning mt-2 px-4">
+                        <i class="bi bi-plus-circle-fill"></i> New Booking
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="card glass-card text-center p-4 h-100">
+            <img src="{{ url_for('static', filename='images/' + (session.get('profile_image', 'harshali.jpg'))) }}?v=2" alt="Harshali" class="owner-avatar mx-auto mb-2">
+            <h3 class="mt-2 fw-bold">{{ user.name }}</h3>
+            <p class="text-warning mb-3">Restaurant Owner</p>
+            <hr>
+            <div class="row">
+                <div class="col-6">
+                    <small class="text-secondary">Restaurant</small>
+                    <h6>Bella Vista</h6>
+                </div>
+                <div class="col-6">
+                    <small class="text-secondary">Status</small>
+                    <h6 class="text-success">🟢 OPEN</h6>
+                </div>
+            </div>
+            <hr>
+            <h5 id="liveDate" class="mb-1"></h5>
+            <h3 id="liveClock" class="fw-bold text-warning mb-0"></h3>
+        </div>
+    </div>
+</div>
+
+<!-- ========================= -->
+<!-- MAIN CONTENT SECTION (2 COLUMNS) -->
+<!-- ========================= -->
+<div class="row mt-4">
+    <!-- LEFT COLUMN (Quick Actions + Analytics) -->
+    <div class="col-lg-4">
+        <!-- Quick Actions -->
+        <div class="card glass-card p-4 mb-4">
+            <h3 class="text-warning mb-4">⚡ Quick Actions</h3>
+            <div class="d-grid gap-3">
+                <a href="{{ url_for('auth.create_table') }}" class="btn btn-success btn-lg">➕ Create Booking</a>
+                <a href="{{ url_for('auth.view_tables') }}" class="btn btn-primary btn-lg">📋 Manage Bookings</a>
+                <a href="{{ url_for('auth.manage_tables') }}" class="btn btn-warning btn-lg">🍽 Restaurant Tables</a>
+                <a href="{{ url_for('auth.export_pdf') }}" class="btn btn-danger btn-lg">📄 Export PDF</a>
+                <a href="{{ url_for('auth.export_excel') }}" class="btn btn-info btn-lg">📊 Export Excel</a>
+                <a href="{{ url_for('auth.logout') }}" class="btn btn-dark btn-lg">🚪 Logout</a>
+            </div>
+        </div>
+
+        <!-- Analytics -->
+        <div class="card glass-card p-4">
+            <h3 class="text-warning mb-3">📊 Analytics</h3>
+            <hr>
+            <canvas id="bookingChart"></canvas>
+            <hr>
+            <div class="text-center">
+                <h5>Occupancy</h5>
+                <h2 class="text-warning">{{ occupancy }}%</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- RIGHT COLUMN (Restaurant Floors + Upcoming Bookings) -->
+    <div class="col-lg-8">
+        <!-- Restaurant Floors -->
+        <div class="card glass-card p-4 mb-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h3 class="text-warning mb-0">🏢 Restaurant Floors</h3>
+                <span class="badge bg-success">LIVE</span>
+            </div>
+
+            <div class="row">
+                <!-- FLOOR 1 -->
+                <div class="col-md-6 mb-4">
+                    <div class="floor-card p-3 border rounded">
+                        <h4>🏢 Floor 1</h4>
+                        <p class="text-secondary small">Main Dining Hall</p>
+                        <hr>
+                        <div class="row text-center">
+                            <div class="col-6">
+                                <h3>15</h3>
+                                <small class="text-secondary">Total Tables</small>
+                            </div>
+                            <div class="col-6">
+                                <h3 class="text-success">8</h3>
+                                <small class="text-secondary">Available</small>
+                            </div>
+                            <div class="col-6 mt-3">
+                                <h3 class="text-warning">4</h3>
+                                <small class="text-secondary">Reserved</small>
+                            </div>
+                            <div class="col-6 mt-3">
+                                <h3 class="text-danger">3</h3>
+                                <small class="text-secondary">Occupied</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FLOOR 2 -->
+                <div class="col-md-6 mb-4">
+                    <div class="floor-card p-3 border rounded">
+                        <h4>🏢 Floor 2</h4>
+                        <p class="text-secondary small">Family & VIP Hall</p>
+                        <hr>
+                        <div class="row text-center">
+                            <div class="col-6">
+                                <h3>15</h3>
+                                <small class="text-secondary">Total Tables</small>
+                            </div>
+                            <div class="col-6">
+                                <h3 class="text-success">10</h3>
+                                <small class="text-secondary">Available</small>
+                            </div>
+                            <div class="col-6 mt-3">
+                                <h3 class="text-warning">2</h3>
+                                <small class="text-secondary">Reserved</small>
+                            </div>
+                            <div class="col-6 mt-3">
+                                <h3 class="text-danger">3</h3>
+                                <small class="text-secondary">Occupied</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+
+            <!-- FLOOR LAYOUT -->
+            <div class="floor-layout-section">
+                <div class="section-title mb-3">
+                    <h4 class="text-warning">🍽 Floor Layout</h4>
+                </div>
+
+                <div class="floor-table-grid">
+                    {% for table in tables %}
+                    <div class="floor-table-card
+                        {% if table.status == 'Available' %}
+                            table-available
+                        {% elif table.status == 'Reserved' %}
+                            table-reserved
+                        {% elif table.status == 'Booked' %}
+                            table-booked
+                        {% else %}
+                            table-available
+                        {% endif %}">
+
+                        <!-- TABLE NUMBER -->
+                        <div class="table-number">{{ table.table_name }}</div>
+
+                        <!-- FLOOR -->
+                        <div class="table-floor">{{ table.floor }}</div>
+
+                        <!-- STATUS -->
+                        <div class="table-status">
+                            {% if table.status == "Available" %}
+                                <span class="status-dot available-dot"></span> Available
+                            {% elif table.status == "Reserved" %}
+                                <span class="status-dot reserved-dot"></span> Reserved
+                            {% elif table.status == "Booked" %}
+                                <span class="status-dot booked-dot"></span> Booked
+                            {% else %}
+                                <span class="status-dot"></span> {{ table.status }}
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- UPCOMING BOOKINGS -->
+        <div class="card glass-card p-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h3 class="text-warning mb-0">📅 Upcoming Bookings</h3>
+                <span class="badge bg-success">{{ upcoming_bookings_count }} Upcoming</span>
+            </div>
+            <hr>
+            <div class="table-responsive">
+                <table class="table table-dark table-hover align-middle">
+                    <thead>
+                        <tr>
+                            <th>Customer</th>
+                            <th>Table</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for booking in upcoming_bookings %}
+                        <tr>
+                            <td>{{ booking.customer_name }}</td>
+                            <td>{{ booking.table_name }}</td>
+                            <td>{{ booking.booking_date }}</td>
+                            <td>{{ booking.booking_time }}</td>
+                            <td>
+                                {% if booking.status=="Available" %}
+                                    <span class="badge bg-success">Available</span>
+                                {% elif booking.status=="Reserved" %}
+                                    <span class="badge bg-warning text-dark">Reserved</span>
+                                {% else %}
+                                    <span class="badge bg-danger">Occupied</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="5" class="text-center text-secondary py-3">
+                                No Upcoming Bookings
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ========================= -->
+<!-- RECENT BOOKINGS (FULL WIDTH) -->
+<!-- ========================= -->
+<div class="row mt-4 mb-4">
+    <div class="col-lg-12">
+        <div class="card glass-card p-4">
+            <h3 class="text-warning mb-4">🕒 Recent Bookings</h3>
+            <div class="table-responsive">
+                <table class="table table-dark table-hover align-middle mb-0">
+                    <thead>
+                        <tr>
+                            <th>Customer</th>
+                            <th>Table</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for table in recent_tables %}
+                        <tr>
+                            <td>{{ table.customer_name }}</td>
+                            <td>{{ table.table_name }}</td>
+                            <td>
+                                {% if table.status=="Available" %}
+                                    <span class="badge bg-success">Available</span>
+                                {% elif table.status=="Reserved" %}
+                                    <span class="badge bg-warning text-dark">Reserved</span>
+                                {% else %}
+                                    <span class="badge bg-danger">Occupied</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="3" class="text-center text-secondary py-3">
+                                No Recent Bookings
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ========================= -->
+<!-- SCRIPTS -->
+<!-- ========================= -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script id="booking-stats" type="application/json">[{{ available }}, {{ reserved }}, {{ booked }}]</script>
+<script>
+const bookingStats = JSON.parse(document.getElementById('booking-stats').textContent);
+
+function updateClock(){
+    const now = new Date();
+    document.getElementById("liveClock").innerHTML = now.toLocaleTimeString();
+    document.getElementById("liveDate").innerHTML = now.toDateString();
+}
+setInterval(updateClock, 1000);
+updateClock();
+
+new Chart(
+    document.getElementById("bookingChart"),
+    {
+        type: "doughnut",
+        data: {
+            labels: ["Available", "Reserved", "Occupied"],
+            datasets: [{
+                data: bookingStats,
+                backgroundColor: ["#16a34a", "#eab308", "#dc2626"],
+                borderWidth: 0
+            }]
+        },
+        options: {
+            plugins: {
+                legend: {
+                    position: "bottom",
+                    labels: { color: "#fff" }
+                }
+            },
+            cutout: "70%"
+        }
+    }
+);
+</script>
+{% endblock %}

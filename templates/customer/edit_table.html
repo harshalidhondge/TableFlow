@@ -1,0 +1,269 @@
+{% extends "layout/base.html" %}
+
+{% block title %}
+Edit Restaurant Table | Bella Vista
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-4">
+
+<div class="row justify-content-center">
+
+<div class="col-lg-8">
+
+<div class="card glass-card shadow-lg border-0">
+
+<div class="card-header border-0 text-center py-4">
+
+<h2 class="fw-bold text-warning">
+
+✏️ Edit Restaurant Table
+
+</h2>
+
+<p class="text-light">
+
+Update restaurant table information
+
+</p>
+
+</div>
+
+<div class="card-body p-5">
+
+<form method="POST">
+
+<div class="mb-4">
+
+<label class="form-label">
+
+Table Name
+
+</label>
+
+<input
+
+type="text"
+
+name="table_name"
+
+class="form-control"
+
+value="{{ table.table_name }}"
+
+required>
+
+</div>
+
+<div class="row">
+
+<div class="col-md-4 mb-4">
+
+<label class="form-label">
+
+Capacity
+
+</label>
+
+<input
+
+type="number"
+
+name="capacity"
+
+class="form-control"
+
+value="{{ table.capacity }}"
+
+min="1"
+
+max="20"
+
+required>
+
+</div>
+
+<div class="col-md-4 mb-4">
+
+<label class="form-label">
+
+Location
+
+</label>
+
+<select
+
+name="location"
+
+class="form-select">
+
+<option value="Main Hall"
+{% if table.location=="Main Hall" %}selected{% endif %}>
+Main Hall
+</option>
+
+<option value="Window Side"
+{% if table.location=="Window Side" %}selected{% endif %}>
+Window Side
+</option>
+
+<option value="VIP Area"
+{% if table.location=="VIP Area" %}selected{% endif %}>
+VIP Area
+</option>
+
+<option value="Outdoor"
+{% if table.location=="Outdoor" %}selected{% endif %}>
+Outdoor
+</option>
+
+<option value="Family Zone"
+{% if table.location=="Family Zone" %}selected{% endif %}>
+Family Zone
+</option>
+
+</select>
+
+</div>
+
+<div class="col-md-4 mb-4">
+
+<label class="form-label">
+
+Table Type
+
+</label>
+
+<select
+
+name="table_type"
+
+class="form-select">
+
+<option value="Regular"
+{% if table.table_type=="Regular" %}selected{% endif %}>
+Regular
+</option>
+
+<option value="VIP"
+{% if table.table_type=="VIP" %}selected{% endif %}>
+VIP
+</option>
+
+<option value="Family"
+{% if table.table_type=="Family" %}selected{% endif %}>
+Family
+</option>
+
+<option value="Outdoor"
+{% if table.table_type=="Outdoor" %}selected{% endif %}>
+Outdoor
+</option>
+
+<option value="Private"
+{% if table.table_type=="Private" %}selected{% endif %}>
+Private
+</option>
+
+</select>
+
+</div>
+
+</div>
+
+<div class="glass-card p-3 mb-4">
+
+<h6 class="text-warning">
+
+Current Status
+
+</h6>
+
+<p class="mb-1">
+
+<strong>Table :</strong> {{ table.table_name }}
+
+</p>
+
+<p class="mb-1">
+
+<strong>Status :</strong>
+
+{% if table.status=="Available" %}
+
+<span class="badge bg-success">
+
+Available
+
+</span>
+
+{% elif table.status=="Reserved" %}
+
+<span class="badge bg-warning text-dark">
+
+Reserved
+
+</span>
+
+{% else %}
+
+<span class="badge bg-danger">
+
+Booked
+
+</span>
+
+{% endif %}
+
+</p>
+
+<p class="mb-0">
+
+<strong>Restaurant :</strong> Bella Vista
+
+</p>
+
+</div>
+
+<div class="d-flex justify-content-between">
+
+<a
+
+href="{{ url_for('auth.manage_tables') }}"
+
+class="btn btn-secondary">
+
+<i class="bi bi-arrow-left-circle"></i>
+
+Back
+
+</a>
+
+<button
+
+type="submit"
+
+class="btn btn-success">
+
+<i class="bi bi-check-circle-fill"></i>
+
+Update Table
+
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

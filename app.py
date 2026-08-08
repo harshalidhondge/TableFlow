@@ -1,9 +1,14 @@
+import os
 from flask import Flask
 from config import Config
 from utils.extensions import db, bcrypt
 
 app = Flask(__name__)
+app.secret_key = "tableflow_secret_key"
+app.secret_key = "tableflow_secret_key"
 app.config.from_object(Config)
+app.config['UPLOAD_FOLDER'] = os.path.join(os.path.dirname(__file__), 'static', 'images')
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 
 db.init_app(app)
 bcrypt.init_app(app)

@@ -1,0 +1,207 @@
+{% extends "layout/base.html" %}
+
+{% block title %}
+Add Restaurant Table | Bella Vista
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-4">
+
+<div class="row justify-content-center">
+
+<div class="col-lg-8">
+
+<div class="card glass-card shadow-lg border-0">
+
+<div class="card-header border-0 text-center py-4">
+
+<h2 class="fw-bold text-warning">
+
+🍽 Add Restaurant Table
+
+</h2>
+
+<p class="text-light">
+
+Create a new table for your restaurant
+
+</p>
+
+</div>
+
+<div class="card-body p-5">
+
+<form method="POST">
+
+<div class="mb-4">
+
+<label class="form-label">
+
+Table Name
+
+</label>
+
+<input
+
+type="text"
+
+name="table_name"
+
+class="form-control"
+
+placeholder="Example : T1 / VIP 01"
+
+required>
+
+</div>
+
+<div class="row">
+
+<div class="col-md-4 mb-4">
+
+<label class="form-label">
+
+Capacity
+
+</label>
+
+<input
+
+type="number"
+
+name="capacity"
+
+class="form-control"
+
+min="1"
+
+max="20"
+
+value="4"
+
+required>
+
+</div>
+
+<div class="col-md-4 mb-4">
+
+<label class="form-label">
+
+Location
+
+</label>
+
+<select
+
+name="location"
+
+class="form-select">
+
+<option>Main Hall</option>
+
+<option>Window Side</option>
+
+<option>VIP Area</option>
+
+<option>Outdoor</option>
+
+<option>Family Zone</option>
+
+</select>
+
+</div>
+
+<div class="col-md-4 mb-4">
+
+<label class="form-label">
+
+Table Type
+
+</label>
+
+<select
+
+name="table_type"
+
+class="form-select">
+
+<option>Regular</option>
+
+<option>VIP</option>
+
+<option>Family</option>
+
+<option>Outdoor</option>
+
+<option>Private</option>
+
+</select>
+
+</div>
+
+</div>
+
+<div class="glass-card p-3 mb-4">
+
+<h6 class="text-warning">
+
+Restaurant Information
+
+</h6>
+
+<ul class="mb-0">
+
+<li>Assign a unique table name.</li>
+
+<li>Select correct seating capacity.</li>
+
+<li>Choose proper restaurant section.</li>
+
+<li>Tables will be available for booking after creation.</li>
+
+</ul>
+
+</div>
+
+<div class="d-flex justify-content-between">
+
+<a
+
+href="{{ url_for('auth.manage_tables') }}"
+
+class="btn btn-secondary">
+
+<i class="bi bi-arrow-left-circle"></i>
+
+Back
+
+</a>
+
+<button
+
+type="submit"
+
+class="btn btn-success">
+
+<i class="bi bi-check-circle-fill"></i>
+
+Save Table
+
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

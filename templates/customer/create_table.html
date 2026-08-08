@@ -1,0 +1,381 @@
+{% extends "layout/base.html" %}
+
+{% block title %}
+New Booking | Bella Vista
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-4">
+
+<div class="row justify-content-center">
+
+<div class="col-lg-10">
+
+<div class="card glass-card shadow-lg border-0">
+
+<div class="card-header text-center py-4 border-0">
+
+<h2 class="fw-bold text-warning">
+
+🍽 Bella Vista
+
+</h2>
+
+<p class="text-light mb-0">
+
+Restaurant Reservation Management
+
+</p>
+
+</div>
+
+<div class="card-body p-5">
+
+<form method="POST">
+
+<div class="row">
+
+    <!-- Table Name -->
+    <div class="col-md-6 mb-4">
+
+        <label class="form-label">Table Name</label>
+
+        <input
+            type="text"
+            name="table_name"
+            class="form-control"
+            placeholder="Example : T1"
+            required>
+
+    </div>
+
+    <!-- Customer Name -->
+    <div class="col-md-6 mb-4">
+
+        <label class="form-label">Customer Name</label>
+
+        <input
+            type="text"
+            name="customer_name"
+            class="form-control"
+            placeholder="Customer Name"
+            required>
+
+    </div>
+
+</div>
+
+<div class="row">
+
+    <!-- Floor -->
+    <div class="col-md-3 mb-4">
+
+        <label class="form-label">Floor</label>
+
+        <select
+            name="floor"
+            class="form-select">
+
+            <option value="Floor 1">Floor 1</option>
+
+            <option value="Floor 2">Floor 2</option>
+
+        </select>
+
+    </div>
+
+    <!-- Capacity -->
+    <div class="col-md-3 mb-4">
+
+        <label class="form-label">Capacity</label>
+
+        <select
+            name="capacity"
+            class="form-select">
+
+            <option value="2">2 Persons</option>
+
+            <option value="4" selected>4 Persons</option>
+
+            <option value="6">6 Persons</option>
+
+            <option value="8">8 Persons</option>
+
+            <option value="10">10 Persons</option>
+
+        </select>
+
+    </div>
+
+    <!-- Location -->
+    <div class="col-md-3 mb-4">
+
+        <label class="form-label">Location</label>
+
+        <select
+            name="location"
+            class="form-select">
+
+            <option>Main Hall</option>
+
+            <option>Window Side</option>
+
+            <option>Family Section</option>
+
+            <option>VIP Area</option>
+
+        </select>
+
+    </div>
+
+    <!-- Table Type -->
+    <div class="col-md-3 mb-4">
+
+        <label class="form-label">Table Type</label>
+
+        <select
+            name="table_type"
+            class="form-select">
+
+            <option>Regular</option>
+
+            <option>Premium</option>
+
+            <option>VIP</option>
+
+        </select>
+
+    </div>
+
+</div>
+<!-- Description -->
+
+<div class="mb-4">
+
+    <label class="form-label">
+
+        Special Request
+
+    </label>
+
+    <textarea
+
+        name="description"
+
+        rows="4"
+
+        class="form-control"
+
+        placeholder="Birthday Celebration, Anniversary, VIP Guest, Decoration etc.">
+
+    </textarea>
+
+</div>
+
+<div class="row">
+
+    <!-- Booking Date -->
+
+    <div class="col-md-4 mb-4">
+
+        <label class="form-label">
+
+            Booking Date
+
+        </label>
+
+        <input
+
+            type="date"
+
+            name="booking_date"
+
+            class="form-control"
+
+            required>
+
+    </div>
+
+    <!-- Booking Time -->
+
+    <div class="col-md-4 mb-4">
+
+        <label class="form-label">
+
+            Booking Time
+
+        </label>
+
+        <input
+
+            type="time"
+
+            name="booking_time"
+
+            class="form-control"
+
+            required>
+
+    </div>
+
+    <!-- Status -->
+
+    <div class="col-md-4 mb-4">
+
+        <label class="form-label">
+
+            Booking Status
+
+        </label>
+
+        <select
+
+            name="status"
+
+            class="form-select">
+
+            <option value="Available">
+
+                🟢 Available
+
+            </option>
+
+            <option value="Reserved">
+
+                🟡 Reserved
+
+            </option>
+
+            <option value="Booked">
+
+                🔴 Booked
+
+            </option>
+
+        </select>
+
+    </div>
+
+</div>
+
+<hr class="my-4">
+
+<div class="row">
+
+    <div class="col-md-6">
+
+        <div class="glass-card p-4 h-100">
+
+            <h5 class="text-warning mb-3">
+
+                📌 Booking Guidelines
+
+            </h5>
+
+            <ul class="mb-0">
+
+                <li>Choose the correct floor.</li>
+
+                <li>Select suitable table capacity.</li>
+
+                <li>Verify customer details carefully.</li>
+
+                <li>Avoid duplicate reservations.</li>
+
+                <li>Confirm date & time before saving.</li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-6">
+
+        <div class="glass-card p-4 h-100">
+
+            <h5 class="text-warning mb-3">
+
+                📋 Booking Summary
+
+            </h5>
+
+            <p><strong>Restaurant :</strong> Bella Vista</p>
+
+            <p><strong>Floors :</strong> Floor 1 & Floor 2</p>
+
+            <p><strong>Total Tables :</strong> 30</p>
+
+            <p><strong>Reservation :</strong> Fine Dining</p>
+
+            <p>
+
+                <strong>Status :</strong>
+
+                <span class="badge bg-success">
+
+                    OPEN
+
+                </span>
+
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+<hr class="my-5">
+
+<div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+
+    <a
+        href="{{ url_for('auth.dashboard') }}"
+        class="btn btn-secondary btn-lg px-4">
+
+        <i class="bi bi-arrow-left-circle-fill"></i>
+
+        Back to Dashboard
+
+    </a>
+
+    <div>
+
+        <button
+            type="reset"
+            class="btn btn-warning btn-lg me-2">
+
+            <i class="bi bi-arrow-clockwise"></i>
+
+            Reset
+
+        </button>
+
+        <button
+            type="submit"
+            class="btn btn-success btn-lg px-5">
+
+            <i class="bi bi-check-circle-fill"></i>
+
+            Save Booking
+
+        </button>
+
+    </div>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}
