@@ -5,9 +5,9 @@ load_dotenv()
 
 
 class Config:
-    SECRET_KEY = os.getenv("bffeddbafa9ed3da1f67f383e939b34e3a3caf9b6ce6912fce02f07091417c30", "tableflow_secret_key")
+    SECRET_KEY = os.getenv("SECRET_KEY", "tableflow_secret_key")
 
-    DATABASE_URL = os.getenv("postgresql://tableflow_db_s4rz_user:WhhPvVzNeD2mtY1tsHOggjNgfWj0PJyS@dpg-d9rkfuv10e5c7389rft0-a/tableflow_db_s4rz")
+    DATABASE_URL = os.getenv("DATABASE_URL")
 
     if DATABASE_URL:
         DATABASE_URL = DATABASE_URL.replace(
